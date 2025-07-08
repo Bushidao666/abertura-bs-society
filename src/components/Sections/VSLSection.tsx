@@ -199,9 +199,9 @@ const VSLSection = () => {
 
                     {/* Terminal Elements */}
                     <div className="absolute top-6 left-6 font-fira-code text-primary/40 text-sm">
-                      <div>> INITIALIZING_STREAM...</div>
-                      <div className="mt-1">> DECRYPTING_DATA...</div>
-                      <div className="mt-1">> STATUS: READY</div>
+                      <div>&gt; INITIALIZING_STREAM...</div>
+                      <div className="mt-1">&gt; DECRYPTING_DATA...</div>
+                      <div className="mt-1">&gt; STATUS: READY</div>
                     </div>
 
                     <div className="absolute bottom-6 right-6 font-fira-code text-primary/40 text-sm text-right">
