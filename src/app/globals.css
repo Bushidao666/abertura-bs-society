@@ -1,26 +1,168 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Cyberpunk Matrix Theme - Light Mode (tratado como dark para consistência) */
+    --background: 0 0% 0%; /* Pure Black */
+    --foreground: 142 100% 70%; /* Matrix Green Light */
+    --card: 0 0% 5%; /* Very Dark Gray Cards */
+    --card-foreground: 142 100% 70%; /* Matrix Green Text */
+    --popover: 0 0% 3%; /* Very Dark */
+    --popover-foreground: 142 100% 70%; /* Matrix Green */
+    --primary: 142 100% 50%; /* Matrix Green Primary */
+    --primary-foreground: 0 0% 0%; /* Black Text on Green */
+    --secondary: 142 30% 10%; /* Matrix Green Transparent */
+    --secondary-foreground: 142 100% 70%; /* Matrix Green Light */
+    --muted: 142 20% 8%; /* Matrix Green Very Dark */
+    --muted-foreground: 142 30% 40%; /* Gray-Green */
+    --accent: 142 50% 15%; /* Matrix Green Accent */
+    --accent-foreground: 142 100% 70%; /* Matrix Green */
+    --destructive: 0 84% 60%; /* Red for errors */
+    --destructive-foreground: 0 0% 98%; /* White text on red */
+    --border: 142 30% 20%; /* Matrix Green Border */
+    --input: 142 20% 10%; /* Matrix Green Input */
+    --ring: 142 100% 50%; /* Matrix Green Focus */
+    --radius: 0.5rem;
+    --chart-1: 142 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    /* Same theme for dark mode consistency */
+    --background: 0 0% 0%; /* Pure Black */
+    --foreground: 142 100% 70%; /* Matrix Green Light */
+    --card: 0 0% 5%; /* Very Dark Gray Cards */
+    --card-foreground: 142 100% 70%; /* Matrix Green Text */
+    --popover: 0 0% 3%; /* Very Dark */
+    --popover-foreground: 142 100% 70%; /* Matrix Green */
+    --primary: 142 100% 50%; /* Matrix Green Primary */
+    --primary-foreground: 0 0% 0%; /* Black Text on Green */
+    --secondary: 142 30% 10%; /* Matrix Green Transparent */
+    --secondary-foreground: 142 100% 70%; /* Matrix Green Light */
+    --muted: 142 20% 8%; /* Matrix Green Very Dark */
+    --muted-foreground: 142 30% 40%; /* Gray-Green */
+    --accent: 142 50% 15%; /* Matrix Green Accent */
+    --accent-foreground: 142 100% 70%; /* Matrix Green */
+    --destructive: 0 84% 60%; /* Red for errors */
+    --destructive-foreground: 0 0% 98%; /* White text on red */
+    --border: 142 30% 20%; /* Matrix Green Border */
+    --input: 142 20% 10%; /* Matrix Green Input */
+    --ring: 142 100% 50%; /* Matrix Green Focus */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Neon Glow Effect */
+  .neon-glow {
+    color: #00ff41;
+    text-shadow: 
+      0 0 5px #00ff41,
+      0 0 10px #00ff41,
+      0 0 15px #00ff41,
+      0 0 20px #00ff41,
+      0 0 35px #00ff41,
+      0 0 40px #00ff41;
+    animation: flicker 2s infinite alternate;
+  }
+
+  /* Matrix Background */
+  .matrix-bg {
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+      linear-gradient(0deg, transparent 24%, rgba(0, 255, 65, 0.05) 25%, rgba(0, 255, 65, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, 0.05) 75%, rgba(0, 255, 65, 0.05) 76%, transparent 77%, transparent),
+      linear-gradient(90deg, transparent 24%, rgba(0, 255, 65, 0.05) 25%, rgba(0, 255, 65, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, 0.05) 75%, rgba(0, 255, 65, 0.05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    background-color: #000000;
+  }
+
+  /* Terminal-style text */
+  .terminal-text {
+    font-family: 'Fira Code', monospace;
+    color: #00ff41;
+    letter-spacing: 0.05em;
+  }
+
+  /* Holographic effect */
+  .holographic {
+    background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 65, 0.1) 50%, transparent 70%);
+    background-size: 200% 200%;
+    animation: hologram 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* Keyframe Animations */
+  @keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      text-shadow: 
+        0 0 5px #00ff41,
+        0 0 10px #00ff41,
+        0 0 15px #00ff41,
+        0 0 20px #00ff41,
+        0 0 35px #00ff41,
+        0 0 40px #00ff41;
+    }
+    
+    20%, 24%, 55% {
+      text-shadow: 
+        0 0 2px #00ff41,
+        0 0 5px #00ff41;
+    }
+  }
+
+  @keyframes hologram {
+    0%, 100% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+  }
+
+  @keyframes matrix-drop {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  @keyframes terminal-blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
 }
